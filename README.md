@@ -12,36 +12,34 @@
 | address                  | string | null: false |
 | email                    | string | null: false, unique: true |
 | encrypted_password       | string | null: false |
-| date                     | string | null: false |
+| date_id                  | string | null: false |
 
 
 
 ### Association
 
-- has_many :item, through: :buy
-- has_many :order
+- has_many :items, through: :buy
+- has_many :buys
 
 
 
 ## item テーブル
 
-| Column        | Type   | Options     |
-| ------------- | ------ | ----------- |
-| name          | string | null: false |
-| image         | string | null: false foreign_key: true|
-| price         | string | null: false |
-| comment       | string | null: false |
-| postage       | string | null: false |
-| item_explain  | string | null: false |
-| user_name     | string | null: false |
-| show_category | string | null: false |
-| take          | string | null: false |
+| Column           | Type         | Options     |
+| ---------------- | ------------ | ----------- |
+| name             | string       | null: false |
+| price            | integer      | null: false |
+| comment          | text         | null: false |
+| postage_id       | active_hash  | null: false |
+| item_explain_id  | string       | null: false |
+| user_name        | string       | null: false, foreign_key: true |
+| category_id | string       | null: false |
+| take_id          | string       | null: false |
 
 
 ### Association
 
-- belongs_to :user
-- belongs_to :order
+- has_many :user
 - belongs_to :buy
 
 ## order テーブル
@@ -51,11 +49,11 @@
 | user_first_name    | string     | null: false |
 | user_family_name   | string     | null: false |
 | add_number         | string     | null: false |
-| prefecture         | string     | null: false |
-| city               | string     | null: false |
-| home_number        | string     | null: false |
-| building_name      | string     | null: false |
-| phone_number       | string     | null: false |
+| prefecture_id      | string     | null: false |
+| city               | string     | null: false, foreign_key: true |
+| home_number        | string     | null: false, foreign_key: true |
+| building_name      | string     | foreign_key: true |
+| phone_number       | string     | null: false, foreign_key: true |
 
 
 
@@ -63,6 +61,7 @@
 
 - has_many :item
 - has_many :user
+- belongs_to :buy
 
 
 
@@ -70,13 +69,15 @@
 
 | Column             | Type   | Options     |
 | ------------------ | ------ | ----------- |
-| item_name          | string | null: false |
-| item_image         | ------ | ----------- |
-| item_price         | ------ | ----------- |
-| item_user_nickname | ------ | ----------- |
+| item_name          | string | null: false, foreign_key: true |
+| item_image         | string | null: false, foreign_key: true |
+| item_price         | string | null: false, foreign_key: true |
+| item_user_nickname | string | null: false, foreign_key: true |
 
 
 
 ### Association
 
 - belongs_to :item
+- has_many :user
+- belongs_to :order
