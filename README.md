@@ -44,14 +44,16 @@
 
 ## order テーブル
 
-| Column        | Type       | Options     |
-| ------------- | ---------- | ----------- |
-| add_number    | string     | null: false |
-| prefecture    | string     | null: false |
-| city          | string     | null: false |
-| home_number   | string     | null: false |
-| building_name | string     | null: false |
-| phone_number  | string     | null: false |
+| Column             | Type       | Options     |
+| ------------------ | ---------- | ----------- |
+| user_first_name    | string     | null: false |
+| user_family_name   | string     | null: false |
+| add_number         | string     | null: false |
+| prefecture         | string     | null: false |
+| city               | string     | null: false |
+| home_number        | string     | null: false |
+| building_name      | string     | null: false |
+| phone_number       | string     | null: false |
 
 
 
