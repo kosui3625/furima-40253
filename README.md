@@ -7,7 +7,7 @@
 | first_name               | string | null: false |
 | family_name              | string | null: false |
 | first_name_hiragana      | string | null: false |
-| family_name_hiragana     | ------ | ----------- |
+| family_name_hiragana     | string | null: false |
 | nickname                 | string | null: false |
 | address                  | string | null: false |
 | email                    | string | null: false, unique: true |
@@ -33,7 +33,7 @@
 | postage_id       | active_hash  | null: false |
 | item_explain_id  | string       | null: false |
 | user_name        | string       | null: false, foreign_key: true |
-| category_id | string       | null: false |
+| category_id      | string       | null: false |
 | take_id          | string       | null: false |
 
 
