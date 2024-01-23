@@ -31,10 +31,10 @@
 | price            | integer      | null: false |
 | comment          | text         | null: false |
 | postage_id       | active_hash  | null: false |
-| item_explain_id  | string       | null: false |
+| item_explain_id  | active_hash  | null: false |
 | user_name        | string       | null: false, foreign_key: true |
-| category_id      | string       | null: false |
-| take_id          | string       | null: false |
+| category_id      | active_hash  | null: false |
+| take_id          | active_hash  | null: false |
 
 
 ### Association
