@@ -31,7 +31,7 @@
 | comment                   | text         | null: false |
 | postage_id                | integer      | null: false |
 | item_explain_id           | integer      | null: false |
-| users_prefecture_id       | integer      | null: false, foreign_key: true |
+| prefecture_id             | references   | null: false, foreign_key: true |
 | user                      | references   | null: false, foreign_key: true |
 | category_id               | integer      | null: false |
 | take_id                   | integer      | null: false |
@@ -39,8 +39,8 @@
 
 ### Association
 
-- has_many :users
-- belongs_to :buy
+- belongs_to :users
+- as_many :buy
 
 ## orders テーブル
 
@@ -48,12 +48,12 @@
 | ------------------------ | ----------- | ----------- |
 | client_name              | string      | null: false |
 | add_number               | string      | null: false |
-| users_prefecture_id      | active_hash | null: false |
+| prefecture_id            | integer     | null: false |
 | city                     | string      | null: false |
 | home_number              | string      | null: false |
-| building_name            | string      | foreign_key: true |
+| building_name            | references  | foreign_key: true |
 | phone_number             | string      | null: false |
-| buy                      | reference   | null: false, foreign_key: true |
+| buy                      | references  | null: false, foreign_key: true |
 
 
 ### Association
@@ -66,10 +66,8 @@
 
 | Column                     | Type        | Options     |
 | -------------------------- | ----------- | ----------- |
-| item_name                  | data        | null: false, foreign_key: true |
-| order_client_name          | data        | null: false, foreign_key: true |
-| item                       | reference   | null: false, foreign_key: true |
-| user                       | reference   | null: false, foreign_key: true |
+| item                       | references   | null: false, foreign_key: true |
+| user                       | references   | null: false, foreign_key: true |
 
 
 
@@ -77,5 +75,5 @@
 
 - belongs_to :item
 - belongs_to :user
-- belongs_to :buy
+- has_one :buy
 
