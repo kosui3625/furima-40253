@@ -18,7 +18,7 @@
 
 ### Association
 
-- has_many :items, through: :buy
+- has_many :items
 - has_many :buys
 
 
@@ -46,8 +46,7 @@
 
 | Column                   | Type       | Options     |
 | ------------------------ | ---------- | ----------- |
-| users_first_name         | string     | null: false |
-| users_family_name        | string     | null: false |
+| client_name              | string     | null: false, foreign_key: true |
 | add_number               | string     | null: false |
 | users_prefecture_id      | string     | null: false, foreign_key: true |
 | city                     | string     | null: false, foreign_key: true |
@@ -67,10 +66,10 @@
 
 ## buys テーブル
 
-| Column                 | Type   | Options     |
-| ---------------------- | ------ | ----------- |
-| item_name              | string | null: false, foreign_key: true |
-| user_nickname          | data   | null: false, foreign_key: true |
+| Column                     | Type   | Options     |
+| -------------------------- | ------ | ----------- |
+| item_name                  | data   | null: false, foreign_key: true |
+| order_client_name          | data   | null: false, foreign_key: true |
 
 
 
