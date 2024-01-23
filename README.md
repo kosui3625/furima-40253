@@ -31,7 +31,7 @@
 | comment                   | text         | null: false | ## 説明
 | postage_id                | integer      | null: false | ## 発送料
 | item_explain_id           | integer      | null: false | ## 商品の状態
-| prefecture_id             | integer      | null: false, foreign_key: true | ## 発送元
+| prefecture_id             | integer      | null: false | ## 発送元
 | user                      | references   | null: false, foreign_key: true | ## ユーザーの外部カラム
 | category_id               | integer      | null: false | ## カテゴリー
 | take_id                   | integer      | null: false | ## 発送までの日数
