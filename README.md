@@ -12,7 +12,7 @@
 | address                  | string | null: false |
 | email                    | string | null: false, unique: true |
 | encrypted_password       | string | null: false |
-| date_id                  | string | null: false |
+| date                     | data   | null: false |
 
 
 
