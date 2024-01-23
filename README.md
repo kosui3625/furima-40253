@@ -40,13 +40,12 @@
 ### Association
 
 - belongs_to :user
-- as_many :buy
+- has_many :buy
 
 ## orders テーブル
 
 | Column                   | Type        | Options     |
 | ------------------------ | ----------- | ----------- |
-| client_name              | string      | null: false |
 | add_number               | string      | null: false |
 | prefecture_id            | integer     | null: false |
 | city                     | string      | null: false |
