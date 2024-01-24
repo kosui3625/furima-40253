@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
-  def index
-  end
+  before_action :set_prototype, except: [:index, :new]
+  before_action :authenticate_user!, except: [:index, :show]
+
 end
