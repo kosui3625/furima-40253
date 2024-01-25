@@ -97,8 +97,8 @@ RSpec.describe User, type: :model do
       end
 
       it "数字のみのパスワードでは登録できないこと" do
-        @user.password = '000000'
-        @user.password_confirmation = '000000'
+        @user.password = '123456'
+        @user.password_confirmation = '123456'
         @user.valid?
         expect(@user.errors.full_messages).to include("は英字と数字の両方を含む必要があります")
       end
@@ -123,15 +123,15 @@ RSpec.describe User, type: :model do
       end
 
       it "カタカナ以外の文字が含まれている姓（カナ）では登録できないこと" do
-        @user.family_name_hiragana = '田中'
+        @user.family_name_hiragana = 'たなか'
         @user.valid?
-        eexpect(@user.errors.full_messages).to include("はカタカナで入力してください")
+        expect(@user.errors.full_messages).to include("はカタカナで入力してください")
       end
 
       it "カタカナ以外の文字が含まれている名前（カナ）では登録できないこと" do
-        @user.first_name_hiragana = '田中'
+        @user.first_name_hiragana = 'たろう'
         @user.valid?
-        expectexpect(@user.errors.full_messages).to include("はカタカナで入力してください")
+        expect(@user.errors.full_messages).to include("はカタカナで入力してください")
       end
     end
   end
