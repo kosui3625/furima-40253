@@ -15,5 +15,12 @@ class User < ApplicationRecord
   validates :first_name_hiragana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/}
   validates :family_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龯々ー]+\z/}
   validates :first_name, presence: true, format: { with: /\A[ぁ-んァ-ン一-龯々ー]+\z/}
+  validates :password, format: { without: /[^ -~｡-ﾟ]+/ }
+  validates :password_confirmation, format: { without: /[^ -~｡-ﾟ]+/ }
+  validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
+  validates :email, presence: true, uniqueness: true
+
+
 end
 
