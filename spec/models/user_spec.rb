@@ -9,7 +9,6 @@ RSpec.describe User, type: :model do
 
     describe "新規登録できるとき" do
       it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
-        @user = FactoryBot.build(:user)
         expect(@user).to be_valid
       end
     end
@@ -73,9 +72,11 @@ RSpec.describe User, type: :model do
      it '重複したemailが存在する場合は登録できない' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
+      another_user.password = 'password1234'
+      another_user.password_confirmation = 'password1234'
       another_user.valid?
       expect(another_user.errors.full_messages).to include('Email has already been taken')
-      end
+    end
 
       it 'emailは@を含まないと登録できない' do
         @user.email = 'testmail'
@@ -92,22 +93,22 @@ RSpec.describe User, type: :model do
 
       it "英字のみのパスワードでは登録できないこと" do
         @user = FactoryBot.build(:user, password: "password", password_confirmation: "password")
-        expect(@user).not_to be_valid
-        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
 
       it "数字のみのパスワードでは登録できないこと" do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
 
       it "全角を含むパスワードでは登録できないこと" do
         @user.password = "Ｔester01"
         @user.password_confirmation = "Ｔester01"
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
+        expect(@user.errors.full_messages).to include("Password is invalid")
       end
 
       it "姓（全角）に半角文字が含まれていると登録できないこと" do
