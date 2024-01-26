@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
 
   describe 'ユーザー新規登録' do
 
-    describe "新規登録できるとき" do
+    context "新規登録できるとき" do
       it "nicknameとemail、passwordとpassword_confirmationが存在すれば登録できる" do
         expect(@user).to be_valid
       end
@@ -92,7 +92,8 @@ RSpec.describe User, type: :model do
       end
 
       it "英字のみのパスワードでは登録できないこと" do
-        @user = FactoryBot.build(:user, password: "password", password_confirmation: "password")
+        @user.password = 'AAAAAA'
+        @user.password_confirmation = 'AAAAAA'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is invalid")
       end
