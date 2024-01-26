@@ -19,8 +19,6 @@ class User < ApplicationRecord
   validates :password_confirmation, format: { without: /[^ -~｡-ﾟ]+/ }
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
   validates :password_confirmation, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
-  validates :email, presence: true, uniqueness: true
-
 
 end
 

@@ -93,45 +93,45 @@ RSpec.describe User, type: :model do
       it "英字のみのパスワードでは登録できないこと" do
         @user = FactoryBot.build(:user, password: "password", password_confirmation: "password")
         expect(@user).not_to be_valid
-        expect(@user.errors.full_messages).to include("Passwordは英字と数字の両方を含む必要があります")
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
       end
 
       it "数字のみのパスワードでは登録できないこと" do
         @user.password = '123456'
         @user.password_confirmation = '123456'
         @user.valid?
-        expect(@user.errors.full_messages).to include("は英字と数字の両方を含む必要があります")
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
       end
 
       it "全角を含むパスワードでは登録できないこと" do
         @user.password = "Ｔester01"
         @user.password_confirmation = "Ｔester01"
         @user.valid?
-        expect(@user.errors.full_messages).to include("は半角英数字のみ使用できます")
+        expect(@user.errors.full_messages).to include("Password is invalid", "Password confirmation is invalid")
       end
 
       it "姓（全角）に半角文字が含まれていると登録できないこと" do
          @user.family_name = "Tanaka"
          @user.valid?
-         expect(@user.errors.full_messages).to include("は全角文字で入力してください")
+         expect(@user.errors.full_messages).to include("Family name is invalid")
       end
 
       it "名（全角）に半角文字が含まれていると登録できないこと" do
         @user.first_name = 'Tarou'
         @user.valid?
-        expect(@user.errors.full_messages).to include("は全角文字で入力してください")
+        expect(@user.errors.full_messages).to include("First name is invalid")
       end
 
       it "カタカナ以外の文字が含まれている姓（カナ）では登録できないこと" do
         @user.family_name_hiragana = 'たなか'
         @user.valid?
-        expect(@user.errors.full_messages).to include("はカタカナで入力してください")
+        expect(@user.errors.full_messages).to include("Family name hiragana is invalid")
       end
 
       it "カタカナ以外の文字が含まれている名前（カナ）では登録できないこと" do
         @user.first_name_hiragana = 'たろう'
         @user.valid?
-        expect(@user.errors.full_messages).to include("はカタカナで入力してください")
+        expect(@user.errors.full_messages).to include("First name hiragana is invalid")
       end
     end
   end
