@@ -5,8 +5,8 @@ class ItemsController < ApplicationController
   def index
   end
 
-  def items
-    params.require(:message).permit(:content, :image).merge(user_id: current_user.id)
+  def new
+    params.require(:comment).permit(:content, :image).merge(user_id: current_user.id)
   end
 
 
