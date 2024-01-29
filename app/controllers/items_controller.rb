@@ -6,8 +6,12 @@ class ItemsController < ApplicationController
   end
 
   def new
-    params.require(:comment).permit(:content, :image).merge(user_id: current_user.id)
   end
 
+  private
+
+  def item_params
+    params.require(:comment).permit(:content, :image).merge(user_id: current_user.id)
+  end
 
 end
