@@ -1,4 +1,4 @@
-class item_explain < ActiveHash::Base
+class ItemExplain < ActiveHash::Base
   self.data = [
     { id: 1, name: '---' },
     { id: 2, name: '新品・未使用' },
