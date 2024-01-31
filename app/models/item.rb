@@ -5,9 +5,11 @@ class Item < ApplicationRecord
   belongs_to :postage
   belongs_to :prefecture
   belongs_to :take
+  belongs_to :user
 
   has_one_attached :image
 
+  validates :user, presence: true
   validates :comment, presence: true
   validates :price, presence: true
   validates :name, presence: true
