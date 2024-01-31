@@ -32,36 +32,36 @@ RSpec.describe Item, type: :model do
         end
   
         it 'cattegory_idが空では登録できない' do
-          @item.category_id = '--'
+          @item.category_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Category is not a number")
+          expect(@item.errors.full_messages).to include("Category must be other than 1")
         end
   
-        it 'item_explainが空では登録できない' do
-          @item.item_explain_id = '--'
+        it 'item_explainがid:1では登録できない' do
+          @item.item_explain_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Item explain is not a number")
+          expect(@item.errors.full_messages).to include("Item explain must be other than 1")
         end
   
-        it 'prefecture_idが空では登録できない' do
-          @item.prefecture_id = '--'
+        it 'prefecture_idがid:1では登録できない' do
+          @item.prefecture_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Prefecture is not a number")
+          expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
         end
   
-          it 'postage_idが空では登録できない' do
-          @item.postage_id = '--'
+          it 'postage_idがid:1では登録できない' do
+          @item.postage_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Postage is not a number")
+          expect(@item.errors.full_messages).to include("Postage must be other than 1")
         end
   
-        it 'take_idが空では登録できない' do
-          @item.take_id = "--"
+        it 'take_idがid:1ではできない' do
+          @item.take_id = "1"
           @item.valid?
-          expect(@item.errors.full_messages).to include("Take is not a number")
+          expect(@item.errors.full_messages).to include("Take must be other than 1")
         end
   
-        it 'imageが空では登録できない' do
+        it 'imageがid:1では登録できない' do
           @item.image = nil
           @item.valid?
           expect(@item.errors.full_messages).to include("Image can't be blank")
