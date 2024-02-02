@@ -22,7 +22,13 @@ class ItemsController < ApplicationController
   end
 
   def show
-    
+    if signed_in?
+      if current_user == @item.user
+        @editable = true
+      elsif @item.available?
+        @purchasable = true
+      end
+    end
   end
 
   def edit
