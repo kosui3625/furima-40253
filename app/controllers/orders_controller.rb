@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:index ]
-  before_action :set_item, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
     @order = Order.new
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to root_path
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 
