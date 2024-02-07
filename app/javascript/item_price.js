@@ -11,3 +11,5 @@ priceInput.addEventListener("input", () => {
   const commission = price * 0.9;
   addTaxDom.innerHTML = commission.toFixed(0);
 });
+
+window.addEventListener("turbo:load", item_price);
