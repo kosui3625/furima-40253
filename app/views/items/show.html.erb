@@ -7,8 +7,8 @@
       <%= @item.name %>
     </h2>
     <div class="item-img-content">
-      <%= image_tag @item.image ,class:"item-img" if @item.image.attached? %>
-        <%# if @item.purchase_records.present? %>
+      <% image_tag @item.image ,class:"item-img" if @item.image.attached? %>
+        <%# if @item.order.present? %>
           <div class="sold-out">
             <span>Sold Out!!</span>
           </div>
@@ -30,7 +30,7 @@
       <%= link_to "削除", "/items/#{@item.id}", data: { turbo_method: :delete }, class:"item-destroy" %>
 
     <% elsif  user_signed_in? %>
-      <%= link_to "購入画面に進む", "items/#{@item.id}/orders" , data: { turbo: false }, class:"item-red-btn"%>
+      <%= link_to "購入画面に進む", "/items/#{@item.id}/orders" , data: { turbo: false }, class:"item-red-btn"%>
 
     <% end %>
 

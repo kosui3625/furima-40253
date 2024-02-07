@@ -1,4 +1,4 @@
-class orders
+class Order
   include ActiveModel::Model
   attr_accessor :add_number, :prefecture_id, :city, :home_number, :building_name, :phone_number, :item, :user
 
@@ -10,4 +10,9 @@ class orders
 
   end
   validates :prefecture_id, numericality: { other_than: 1 } 
+
+  def save
+    pay = Pay.create(price: price, user_id: user_id)
+    Address.create(add_number: add_number, prefecture: prefecture, city: city, home_number: home_number, building_name: building_name, phone_number: phone_number)
+  end
 end
