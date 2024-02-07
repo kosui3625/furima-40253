@@ -6,7 +6,7 @@ class Order
     validates :add_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city, presence: true
     validates :home_number, presence: true
-    validates :phone_number, presence: true,  format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+    validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: 'is invalid. Input half-width characters.'}
 
   end
   validates :prefecture_id, numericality: { other_than: 1 } 
