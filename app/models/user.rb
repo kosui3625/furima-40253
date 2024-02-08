@@ -18,5 +18,7 @@ class User < ApplicationRecord
   validates :password, format: { without: /[^ -~｡-ﾟ]+/ }
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i }
 
+  has_one :pay
+
 end
 
