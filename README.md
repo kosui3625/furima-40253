@@ -40,7 +40,7 @@
 ### Association
 
 - belongs_to :user
-- has_many :pays
+- has_one :pay
 
 ## addresses テーブル
 
