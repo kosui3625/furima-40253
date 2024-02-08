@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
     if @order.valid?
       pay_item
       @order.save
+      gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       redirect_to root_path
     else
       render :index, status: :unprocessable_entity
