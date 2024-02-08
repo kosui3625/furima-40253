@@ -49,6 +49,12 @@ RSpec.describe Order, type: :model do
         expect(@order.errors.full_messages).to include('Add number is invalid. Include hyphen(-)')
       end
 
+      it "tokenが空では登録できないこと" do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
+
     end
   end
 end
