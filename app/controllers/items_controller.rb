@@ -26,6 +26,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    set_item
+    if current_user.id == @item.user_id && !@item.pay.present?
+
+    else
+      redirect_to root_path
+    end
   end
 
   def update
