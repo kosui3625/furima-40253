@@ -11,6 +11,8 @@ class Order
     validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: 'is invalid. Input half-width characters.'}
     validates :token, presence: true
     validates :prefecture_id, numericality: { other_than: 1 } 
+    validates :user_id, presence: true
+    validates :item_id, presence: true
 
   end
 
