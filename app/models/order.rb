@@ -7,6 +7,7 @@ class Order
     validates :city, presence: true
     validates :home_number, presence: true
     validates :phone_number, presence: true, format: {with: /\A\d{10,11}\z/, message: 'is invalid. Input half-width characters.'}
+    validates :token, presence: true
 
   end
   validates :prefecture_id, numericality: { other_than: 1 } 
