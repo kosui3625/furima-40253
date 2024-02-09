@@ -29,6 +29,12 @@ RSpec.describe Order, type: :model do
           expect(@order.errors.full_messages).to include("Add number can't be blank")
         end
 
+        it 'add_numberが-なしでは登録できない' do
+          @order.add_number = '1234567'
+          @order.valid?
+          expect(@order.errors.full_messages).to include("Add number is invalid. Include hyphen(-)")
+        end
+
         it 'cityが空では登録できない' do
           @order.city = ''
           @order.valid?
@@ -46,6 +52,24 @@ RSpec.describe Order, type: :model do
           @order.valid?
           expect(@order.errors.full_messages).to include("Phone number can't be blank")
         end
+
+          it 'phone_numberが10桁以下では登録できない' do
+            @order.phone_number = '123456789' 
+            @order.valid?
+            expect(@order.errors.full_messages).to include("Phone number must be 10 or 11 digits")
+          end
+      
+          it 'phone_numberが11桁以上では登録できない' do
+            @order.phone_number = '123456789012' 
+            @order.valid?
+            expect(@order.errors.full_messages).to include("Phone number must be 10 or 11 digits")
+          end
+
+          it 'phone_numberが英数字以外が含まれている場合は登録できない' do
+            @order.phone_number = '1234567890a' # includes non-numeric characters
+            @order.valid?
+            expect(@order.errors.full_messages).to include("Phone number is not a number")
+          end
 
         it 'prefecture_idがid:1では登録できない' do
           @order.prefecture_id = '1'
