@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   has_many :pay
   has_many :address
+  has_many :item
 
 end
 
