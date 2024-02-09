@@ -18,7 +18,7 @@
 ### Association
 
 - has_many :items
-- has_many :buys
+- has_many :pays
 
 
 
@@ -40,9 +40,9 @@
 ### Association
 
 - belongs_to :user
-- has_many :buy
+- has_one :pay
 
-## orders テーブル
+## addresses テーブル
 
 | Column                   | Type        | Options     |
 | ------------------------ | ----------- | ----------- |
@@ -52,16 +52,16 @@
 | home_number              | string      | null: false |
 | building_name            | references  | foreign_key: true |
 | phone_number             | string      | null: false |
-| buy                      | references  | null: false, foreign_key: true |
+| pay                      | references  | null: false, foreign_key: true |
 
 
 ### Association
 
-- belongs_to :buy
+- belongs_to :pay
 
 
 
-## buys テーブル
+## pays テーブル
 
 | Column                     | Type        | Options     |
 | -------------------------- | ----------- | ----------- |
@@ -74,5 +74,6 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_one :buy
+- has_one :address
+
 
