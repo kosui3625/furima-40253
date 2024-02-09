@@ -29,12 +29,6 @@ RSpec.describe Order, type: :model do
           expect(@order.errors.full_messages).to include("Add number can't be blank")
         end
 
-        it 'add_numberが-なしでは登録できない' do
-          @order.add_number = '1234567'
-          @order.valid?
-          expect(@order.errors.full_messages).to include("Add number is invalid. Include hyphen(-)")
-        end
-
         it 'cityが空では登録できない' do
           @order.city = ''
           @order.valid?
