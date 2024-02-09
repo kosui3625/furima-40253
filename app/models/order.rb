@@ -20,6 +20,6 @@ class Order
 
   def save
     pay = Pay.create(user_id: user_id, item_id: item_id)
-    address = Address.create(add_number: add_number, prefecture_id: prefecture_id, city: city, home_number: home_number, building_name: building_name, phone_number: phone_number)
+    address = Address.create(add_number: add_number, prefecture_id: prefecture_id, city: city, home_number: home_number, building_name: building_name, phone_number: phone_number, pay_id: pay.id)
   end
 end
