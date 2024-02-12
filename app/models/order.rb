@@ -8,8 +8,7 @@ class Order
     validates :add_number, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :city
     validates :home_number
-    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: 'must be 10 or 11 digits' }
-    validates :phone_number, numericality: { only_integer: true }
+    validates :phone_number, format: {with: /\A\d{10,11}\z/, message: 'must be 10 or 11 digits' }, numericality: { only_integer: true }
     validates :token
     validates :prefecture_id, numericality: { other_than: 1 } 
     validates :user_id
