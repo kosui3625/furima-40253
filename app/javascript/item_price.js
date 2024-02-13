@@ -9,7 +9,7 @@ const item_price = () => {
   priceInput.addEventListener("input", () => {
     const addTaxDom = document.getElementById("profit");
     const price = parseInt(priceInput.value);
-    const commission = Math.floor(price * 0.9);
+    const commission = price * 0.9;
     addTaxDom.innerHTML = commission.toFixed(0);
   });
 };
